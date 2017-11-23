@@ -3,7 +3,7 @@
     <input type="text" v-model="qs" placeholder="Enter your query, e.g. %admin%.gov.au and press Enter" class="qs" @keyup.enter="search" @input="reset">
 
     <div class="domains" v-if="this.items.length > 0">
-      <div class="domain" v-for="d in items">
+      <div class="domain" v-for="d in items" v-bind:key="d.id">
         <div class="link">
           <a :href="'https://' + d.domain" target="_blank" rel="noreferrer noopener" :title="d.domain">{{ d.domain }}</a>
           <small>({{ d.etld || 'is an eTLD' }})</small>
@@ -57,7 +57,8 @@ export default {
       if (this.qs === undefined || this.qs === null || this.qs.length < 3) {
         return Promise.resolve('done')
       }
-      return axios.get('https://api.ausdomainledger.net/api/v1/query?' + qs.stringify({ query: this.qs, limit: this.limit, from_time: this.lastTime, last_id: this.lastId }))
+      return axios.get('https://api.ausdomainledger.net/api/v1/query?' +
+        qs.stringify({ query: this.qs, limit: this.limit, from_time: this.lastTime, last_id: this.lastId }))
       .then((data) => {
         // API response contains sorted (last_seen DESC) array of domains
         let res = data.data.results
@@ -76,9 +77,10 @@ export default {
 
         // Add the unique remainder
         this.items.push.apply(this.items, filtered)
-        let newTime = this.items[this.items.length - 1].last_seen
-        this.lastId = this.lastTime === newTime ? data.data.last : null
-        this.lastTime = newTime
+
+        let oldestSeen = this.items[this.items.length - 1].first_seen
+        this.lastId = filtered.every(e => e.first_seen === oldestSeen) ? data.data.last : null
+        this.lastTime = oldestSeen
 
         return Promise.resolve(res.length < this.limit ? 'done' : null)
       })
