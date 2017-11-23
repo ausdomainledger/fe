@@ -7,7 +7,6 @@
         <li><router-link :to="{name: 'Hello'}">Home</router-link></li>
         <li><router-link :to="{name: 'Hello', query: { q: '%%%' }}">Latest</router-link></li>
         <li><router-link :to="{name: 'About'}">About</router-link></li>
-        <li><router-link :to="{name: 'API'}">API</router-link></li>
         <li><a href="https://github.com/ausdomainledger" target="_blank" rel="noopener noreferrer">Source Code</a></li>
       </ul>
     </div>
