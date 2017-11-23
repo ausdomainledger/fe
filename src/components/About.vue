@@ -2,23 +2,29 @@
   <div class="about">
     <h2>Purpose</h2>
     <p>
-      This site is a quick Saturday project to try and make searching for names within in the .au ccTLD a bit easier.
+      This site is a project to make searching the .au ccTLD easier. In other words, it is a giant list of .au domains and subdomains.
     </p>
     <p>
-      I personally am not too happy with the fact that it is quite difficult to get your hands on the .au zonefile. This service certainly isn't the equivalant of having your hands on that zonefile, but it does have a few notable differences:
+      I was not too happy with the fact that it is quite difficult to get your hands on the .au zonefile. This service certainly isn't the equivalant of having your hands on that zonefile, but it does have a few notable differences:
     </p>
     <ul>
-      <li>Because the primary data source is 
-        <a target="_blank" rel="noopener noreferrer" href="https://certificate-transparency.org">Certificate Transparency</a> logs, It will list subdomains of zones, not just the zone itself.</li>
-      <li>... also because of the above, it is more likely to list domains that are in real use.</li>
-      <li>... but will not cover domains that do not have SSL certificates issued</li>
-      <li>... and can have some delay when it comes to finding new domains. In fact, the site is still doing its initial index.</li>
+      <li>Lists subdomains where possible</li>
+      <li>Is historical - shows past entries and when they were first/last seen</li>
+      <li>Is free for all uses</li>
     </ul>
     <p>
-    It's also true that other sites already exist to index CT logs (like crt.sh), but I have found them unusable when it comes to exploring the .au ccTLD. That's why this exists.</p>
+      The primary sources for this index are:
     </p>
-    <p>I have also applied for access to DNSDB to try get better completion.</p>
-    <p>By the way, the API is not at all restricted apart from some rate limits that you shouldn't hit. If you can figure out the network requests, feel free.</p>
+    <ul>
+      <li>Certificate Transparency logs (hourly)</li>
+      <li>Common Crawl URL Index (monthly)</li>
+      <li>AusRegistry/auDA Drop List (multiple times an hour)</li>
+      <li>(Coming Soon) Censys.io Raw Data</li>
+    </ul>
+    <p>
+      Other sites certainly exist that to index this kind of data (like crt.sh, censys.io), but I have found them unusable when it comes to exploring the .au ccTLD. That's why this exists.</p>
+    </p>
+    <p>I applied for access to DNSDB to try get better completion, but unfortunately their licensing does not permit republishing unless I pay.</p>
     <h2>Some example queries to give you inspiration</h2>
     <ul>
       <li><router-link :to="{name: 'Hello', query: { q: '%.gov.au' } }">All .gov.au, newest at the top</router-link></li>
@@ -26,11 +32,6 @@
       <li><router-link :to="{name: 'Hello', query: { q: '%owncloud%' } }">Various OwnCloud instances ...</router-link></li>
       <li><router-link :to="{name: 'Hello', query: { q: '%%%' } }">Latest names in .au ...</router-link></li>
     </ul>
-    <h2>Technical/Source Code</h2>
-    <p>
-      This application is basically just one Go process crawling a bunch of CT logs (to be specific, the Chromium CT log list) into a Postgres database, and one Go web server acting as the query API server. 
-    </p>
-    <p>You can <a href="https://ausdomainledger.net/ausdomainledger-src.tar.gz">look at the source of the two single-file programs</a> but it's probably a better idea to rewrite it. There is no licence provided here anyway.</p>
   </div>
 </template>
 
