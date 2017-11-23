@@ -24,7 +24,9 @@
     <p>
       Other sites certainly exist that to index this kind of data (like crt.sh, censys.io), but I have found them unusable when it comes to exploring the .au ccTLD. That's why this exists.</p>
     </p>
-    <p>I applied for access to DNSDB to try get better completion, but unfortunately their licensing does not permit republishing unless I pay.</p>
+    <p>The full source code to every component, including this website, are available on Github:</p>
+    <p>
+      <a href="https://github.com/ausdomainledger" target="_blank" rel="noopener noreferrer">github.com/ausdomainledger</a></p>     
     <h2>Some example queries to give you inspiration</h2>
     <ul>
       <li><router-link :to="{name: 'Hello', query: { q: '%.gov.au' } }">All .gov.au, newest at the top</router-link></li>
@@ -55,7 +57,7 @@
     </p>
     <h3>Statistics</h3>
     <p>A statistics endpoint is available which shows how many domains and eTLD+1s are indexed.</p>
-    <p><pre>GET <a href="https://api.ausdomainledger.net/api/v1/stats">https://api.ausdomainledger.net/api/v1/stats</a></pre></p>    
+    <p><pre>GET <a href="https://api.ausdomainledger.net/api/v1/stats">https://api.ausdomainledger.net/api/v1/stats</a></pre></p>   
   </div>
 </template>
 
