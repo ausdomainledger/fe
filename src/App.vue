@@ -17,7 +17,11 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  metaInfo: {
+    title: 'Home',
+    titleTemplate: '%s | Australian Domain Ledger'
+  }
 }
 </script>
 

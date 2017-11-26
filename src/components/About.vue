@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h2>Purpose</h2>
+    <h2 id="purpose">Purpose</h2>
     <p>
       This site is a project to make searching the .au ccTLD easier. In other words, it is a giant list of .au domains and subdomains.
     </p>
@@ -19,7 +19,7 @@
       <li>Certificate Transparency logs (hourly)</li>
       <li>Common Crawl URL Index (monthly)</li>
       <li>AusRegistry/auDA Drop List (multiple times an hour)</li>
-      <li>(Coming Soon) Censys.io Raw Data</li>
+      <li>Censys.io Raw Data (occasional backfill)</li>
     </ul>
     <p>
       Other sites certainly exist that to index this kind of data (like crt.sh, censys.io), but I have found them unusable when it comes to exploring the .au ccTLD. That's why this exists.</p>
@@ -27,14 +27,14 @@
     <p>The full source code to every component, including this website, are available on Github:</p>
     <p>
       <a href="https://github.com/ausdomainledger" target="_blank" rel="noopener noreferrer">github.com/ausdomainledger</a></p>     
-    <h2>Some example queries to give you inspiration</h2>
+    <strong>Some example queries to give you inspiration</strong>
     <ul>
       <li><router-link :to="{name: 'Hello', query: { q: '%.gov.au' } }">All .gov.au, newest at the top</router-link></li>
       <li><router-link :to="{name: 'Hello', query: { q: '%wordpress%' } }">.au Domains containing 'wordpress'</router-link></li>
       <li><router-link :to="{name: 'Hello', query: { q: '%owncloud%' } }">Various OwnCloud instances ...</router-link></li>
       <li><router-link :to="{name: 'Hello', query: { q: '%%%' } }">Latest names in .au ...</router-link></li>
     </ul>
-    <h2>API</h2>
+    <h2 id="api">API</h2>
     <p>An API is available for any purposes. I will document it briefly here.</p>
     <h3>Query</h3>
     <p>The query endpoint is slightly complex due to the underlying schema. Refer to the source code of this front-end application
@@ -63,6 +63,9 @@
 
 <script>
 export default {
+  metaInfo: {
+    title: 'About'
+  }
 }
 </script>
 
@@ -76,5 +79,9 @@ export default {
 }
 a {
   color: #369;
+}
+dt {
+  font-weight: bold;
+  font-family: monospace;
 }
 </style>

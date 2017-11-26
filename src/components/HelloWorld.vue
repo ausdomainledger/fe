@@ -14,7 +14,18 @@
         </div>
       </div>
     </div>
-    <scroller ref="scroller" @infinite="infiniteHandler" class="scroller"></scroller>
+    <scroller ref="scroller" @infinite="infiniteHandler" class="scroller">
+      <span slot="no-more">
+        <span v-if="q && q.indexOf('%') === -1">
+          No more results. You may find more results with 
+          <router-link :to="{ name: 'Hello', query: { q: '%' + q + '%' } }" 
+          title="Searching with wildcards will give you more results.">%{{ q }}%</router-link>.
+        </span>
+        <span v-else-if="q">
+          No more results.
+        </span>
+      </span>
+    </scroller>
     <div v-if="stats && this.items.length === 0" class="stats">
       Indexed {{ stats.domains.toLocaleString() }} names so far <br><small>(comprising of {{ stats.etlds.toLocaleString() }} eTLD+1s)</small>
     </div>
@@ -29,6 +40,14 @@ import timeago from 'timeago.js'
 
 export default {
   name: 'HelloWorld',
+  metaInfo: {
+    title: 'Search',
+    meta: [
+      {
+        name: 'description', content: 'View and search for .au domains for free in our .au domain and subdomain list'
+      }
+    ]
+  },
   components: {
     'scroller': InfiniteLoading
   },
@@ -135,6 +154,9 @@ export default {
   font-size: 1.5em;
   padding: 1em;
   box-sizing: border-box;
+}
+.scroller a {
+  color: #008751;
 }
 .copy {
   width: 80%;
