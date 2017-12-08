@@ -11,6 +11,10 @@
     </ul>
     <p>The download is updated <strong>nightly at 04:00 AEST</strong>.</p>
     <p class="download">Download: <a href="/au-domains-latest.csv.gz" title="Direct download to the .au domain list">au-domains-latest.csv.gz</a></p>
+    <p>This database is made available under the  
+      <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal</a> licence.
+      This effectively means it is public domain, but please refer to the specific licence text for further details.
+    </p>
   </div>
 </template>
 
