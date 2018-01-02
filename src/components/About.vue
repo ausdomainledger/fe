@@ -58,6 +58,10 @@
     <h3>Statistics</h3>
     <p>A statistics endpoint is available which shows how many domains and eTLD+1s are indexed.</p>
     <p><pre>GET <a href="https://api.ausdomainledger.net/api/v1/stats">https://api.ausdomainledger.net/api/v1/stats</a></pre></p>   
+    <h2>Research</h2>
+    <p>
+      <a href="https://ausdomainledger.net/cpanelhosts2017/">Australian cPanel Webhost Size Showdown</a> - A comparison of cPanel Shared Hosting Providers in Australia at the end of 2017
+    </p>
   </div>
 </template>
 
